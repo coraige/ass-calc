@@ -1,5 +1,9 @@
     org 100h
 
+
+;Mahmoud Nafiseh  20150392
+
+
 .data
     
     result db 0ah,0dh, "Your expression result is: $"
@@ -16,7 +20,7 @@
  calc:
       mov ax,@data            
       mov ds,ax               
-      call input              
+      call input               
       call parse             
       call op        
       mov [si],'#'            
@@ -30,46 +34,46 @@ input  proc
      mov ah,09h          
      int 21h             
                
-       
+                              
                         
    inp1:          
     mov ah,01h          
-    int 21h 
+    int 21h                    ;Mahmoud Nafiseh  20150392
     mov ah,al           
     cmp al,13d                       
     jz  print_mesg2
-    mov ah,al 
+    mov ah,al                  ;Mahmoud Nafiseh  20150392
     mov dh,'9'         
     jc inval        
     sub al,'0'         
-    inc si              
+    inc si                     ;Mahmoud Nafiseh  20150392
     mov [si],al       
     jmp inp1         
                 
                
                 
-   print_mesg2:
+   print_mesg2:                ;Mahmoud Nafiseh  20150392
     inc si             
     mov [si],'#'        
     lea dx,mesg2         
     mov ah,09h          
     int 21h             
-                                   
+                                ;Mahmoud Nafiseh  20150392   
   inp2:
     mov ah,01h         
     int 21h           
     cmp al,13d         
     jz exit           
-    mov ah,al
+    mov ah,al                   ;Mahmoud Nafiseh  20150392
     sub ah,'0'         
     jc inval        
     mov ah,al 
     mov dh,'9'
-    sub dh,ah          
+    sub dh,ah                   ;Mahmoud Nafiseh  20150392
     jc inval         
     sub al,'0'        
     inc si           
-    mov [si],al        
+    mov [si],al                 ;Mahmoud Nafiseh  20150392
     jmp inp2         
     exit:              
        ret
